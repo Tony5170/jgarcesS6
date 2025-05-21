@@ -8,6 +8,10 @@
             Text="CRUD DE ESTUDIANTES"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button x:Name="btnAñadir"
+                Text="Añadir Estudiante"
+                HorizontalOptions="End"
+                Clicked="btnAñadir_Clicked"/>
 
         <Grid Padding="10" BackgroundColor="MintCream" ColumnSpacing="10">
             <Grid.ColumnDefinitions>
@@ -22,7 +26,7 @@
             <Label Text="Edad" FontAttributes="Bold" Grid.Column="3" HorizontalTextAlignment="Center"/>
         </Grid>
 
-        <ListView x:Name="lvEstudiantes" SeparatorVisibility="None" HasUnevenRows="True">
+        <ListView x:Name="lvEstudiantes" SeparatorVisibility="None" HasUnevenRows="True" ItemSelected="lvEstudiantes_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

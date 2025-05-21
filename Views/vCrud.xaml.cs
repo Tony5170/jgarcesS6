@@ -15,13 +15,25 @@ public partial class vCrud : ContentPage
 	{
 		InitializeComponent();
 		mostrarEstudiantes();
-    }
+	}
 
 	public async void mostrarEstudiantes()
 	{
 		var content = await cliente.GetStringAsync(URL);
 		List<Estudiante> estudiantes = JsonConvert.DeserializeObject<List<Estudiante>>(content);
-        _estudianteTem = new ObservableCollection<Estudiante>(estudiantes);
+		_estudianteTem = new ObservableCollection<Estudiante>(estudiantes);
 		lvEstudiantes.ItemsSource = _estudianteTem;
+	}
+
+	public void btnAñadir_Clicked(object sender, EventArgs e)
+	{
+		Navigation.PushAsync(new AñadirEstudiante());
+	}
+
+    private void lvEstudiantes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+		var obEstudiante = (Estudiante)e.SelectedItem;
+		Navigation.PushAsync(new vActElim(obEstudiante));
     }
 }
+
